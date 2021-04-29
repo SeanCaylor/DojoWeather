@@ -44,7 +44,7 @@
     .....M.~.:..,:?MM....................IMMM=+IMM.=~+M......
     .....M=~~::::?MM.....................MMM++~IMM::+MM......
     .....MM:~~:,++MM....................~MM++++7MM.~+MM .....
-    .....MM~~~~~:?MM....................MM?+++IIMM~~ZM.......
+    .....MM~~~~~:?MM....................MM?+++                                             IIMM~~ZM.......
     ......M?,~:,::MM...................MM+++++?7MM~~MM.......   
     ......MM:.:::,=M7.................MM+++++=77M~:NM  ......
     .. . ..M$.~::~~MM...............=MM+++++?IIMM.+M,     ...
@@ -83,20 +83,50 @@
     <h1 class="title">DojoWeather</h1>
     <h1 class="spacer">SPACE</h1>
     <ul class="links">
-        <li class="cities" id="burbankLink"><a href="#">Burbank</a></li>
-        <li class="cities" id="chicagoLink"><a href="#">Chicago</a></li>
-        <li class="cities" id="dallasLink"><a href="#">Dallas</a></li>
+        <li class="cities"><a href="#" id="link1">Burbank</a></li>
+        <li class="cities"><a href="#" id="link2">Chicago</a></li>
+        <li class="cities"><a href="#" id="link3">Dallas</a></li>
     </ul>
 </div>
 <div class="mainCont">
     <div class="cityHeader">
-        <h1 id="currentCity">San Jose</h1>
+        <h1 id="currentCity">Lorem</h1>
         <p>show temperature in <select name="unit" class="unit" id="unit">
             <option value="fahrenheit">&deg; F</option>
             <option value="celsius">&deg; C</option>
         </select></p>
     </div>
-
+    <div class="cardCase">
+        <div class="weatherCard" id="todayCard">
+            <h2>Today</h2>
+            <img src="./img/some_sun.png" alt="Today's Weather" class="image" id="todayImg">
+            <p id="todayText">lorem</p>
+            <p><span class="highTemp" id="todayHTemp">42&deg;</span><span class="lowTemp" id="todayLTemp">42&deg;</span></p>
+        </div>
+        <div class="weatherCard" id="tomorrowCard">
+            <h2>Tomorrow</h2>
+            <img src="./img/some_sun.png" alt="Tomorrow's Weather" class="image" id="tomorrowImg">
+            <p id="tomorrowText">Lorem</p>
+            <p><span class="highTemp" id="tomorrowHTemp">42&deg;</span><span class="lowTemp" id="tomorrowLTemp">42&deg;</span></p>
+        </div>
+        <div class="weatherCard" id="day3Card">
+            <h2 id="day3Name">Lorem</h2>
+            <img src="./img/some_sun.png" alt="Day 3's Weather" class="image" id="day3Img">
+            <p id="day3Text">Lorem</p>
+            <p><span class="highTemp" id="day3HTemp">42&deg;</span><span class="lowTemp" id="day3LTemp">42&deg;</span></p>
+        </div>
+        <div class="weatherCard" id="day4Card">
+            <h2 id="day4Name">Lorem</h2>
+            <img src="./img/some_sun.png" alt="Day 4's Weather" class="image" id="day4Img">
+            <p id="day4Text">Lorem</p>
+            <p><span class="highTemp" id="day4HTemp">42&deg;</span><span class="lowTemp" id="day4LTemp">42&deg;</span></p>
+        </div>
+    </div>
+</div>
+<div class="cookieAlert" id="cookieAlert">
+    <img src="./img/cookie.png" alt="an alert icon" class="alert">
+    <p>This site makes use of third-party cookies, by clicking "I accept"<br>you agree to the terms outlined in our <a href="https://youtu.be/iCFOcqsnc9Y">cookie policy.</a></p>
+    <button id="cookieAccept" onclick="cookieMonster()">I Accept</button>
 </div>
 
 <script src="./script.js"></script>

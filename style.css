@@ -1,0 +1,56 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    list-style-type: none;
+}
+
+.cityHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 115px;
+    font-weight: lighter;
+    border-bottom: solid black 3px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+}
+
+.links a {
+    text-decoration: none;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.links a:hover {
+    color: rgb(212, 209, 209);
+}
+
+.mainCont {
+    margin: 0px 8%;
+}
+
+.navBar {
+    background-color: #A0C5F8;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 115px;
+    font-size: larger;
+    padding: 0px 10%;
+}
+
+.spacer {
+    flex: 1.5;
+    font-size: 4rem;
+    color: #A0C5F8
+}
+
+.unit {
+    border: solid black 2px;
+}

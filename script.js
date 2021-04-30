@@ -13,26 +13,12 @@ const weatherDesc = {
     rainy: ["some rain", "some_rain.png"]
 }
 
-document.getElementById("currentCity").innerHTML = "San Jose";
-
 var cookie = document.getElementById("cookieAlert");
+var day3 = ""
+var day4 = ""
 var today = daysOfWeek[todaysDay()];
-if (today == "Thursday"){
-    var day3 = "Saturday"
-    var day4 = "Sunday"
-}else if (today == "Friday"){
-    var day3 = "Sunday";
-    var day4 = "Monday";
-}else if (today == "Saturday"){
-    var day3 = "Monday";
-    var day4 = "Tuesday";
-}else if (today == "Sunday"){
-    day3 = "Tuesday";
-    day4 = "Wednesday";
-}else {
-    day3 = daysOfWeek[todaysDay() + 2];
-    day4 = daysOfWeek[todaysDay() + 3];
-}
+var fCheck = true; //indicates we're in Fahrenheit
+
 
 var cityWeather = {
     sanJose: [
@@ -65,14 +51,56 @@ var cityWeather = {
     ]
 }
 
+function camelKase(input){
+    let temp = [];
+    let tempArr = input.split(' ');
+
+    for (let val of tempArr) {
+        let newVal = val.charAt(0).toUpperCase() + val.slice(1,val.length)
+        temp.push(newVal)
+    }
+    let camelized = temp.join('');
+    return camelized.charAt(0).toLocaleLowerCase() + camelized.slice(1,camelized.length)
+}
+
 function cookieMonster(){
     cookie.style.visibility = "hidden"
 }
 
 function initialize() {
-    document.getElementById("currentCity").innerHTML = cityWeather.sanJose[4];
+    sundayRunAround()
     document.getElementById("day3Name").innerHTML = day3;
     document.getElementById("day4Name").innerHTML = day4;
+    weatherCardChango()
+}
+
+function linkOChango(element){
+    let temp = document.getElementById("currentCity").innerHTML;
+    cCity = cityWeather[camelKase(element.innerHTML)];
+    document.getElementById("currentCity").innerHTML = element.innerHTML;
+    element.innerHTML = temp;
+
+    console.log(cCity)
+    weatherCardChango();
+}
+
+function sundayRunAround(){
+    if (today == "Thursday"){
+        day3 = "Saturday"
+        day4 = "Sunday"
+    }else if (today == "Friday"){
+        day3 = "Sunday";
+        day4 = "Monday";
+    }else if (today == "Saturday"){
+        day3 = "Monday";
+        day4 = "Tuesday";
+    }else if (today == "Sunday"){
+        day3 = "Tuesday";
+        day4 = "Wednesday";
+    }else {
+        day3 = daysOfWeek[todaysDay() + 2];
+        day4 = daysOfWeek[todaysDay() + 3];
+    }
 }
 
 function todaysDay() {
@@ -81,28 +109,52 @@ function todaysDay() {
     return day;
 }
 
-// function weatherCardChango() {
-//     document.getElementById("todayImg").src = 
-//     document.getElementById().innerHTML = 
-//     document.getElementById().innerHTML = 
-//     document.getElementById().innerHTML = 
+var cCity = cityWeather.sanJose; /*var cCity index: cCity [i][j][k] i: (day of the week)*/
+/*(j: 0:array, 1:high temp, 2:low temp) (k:only exists in position [i][0] 0:text 1:img)*/
 
-//     document.getElementById().innerHTML = 
-//     document.getElementById().innerHTML = 
-//     document.getElementById().innerHTML = 
-//     document.getElementById().innerHTML = 
+function weatherCardChango() {
+    document.getElementById("currentCity").innerHTML = cCity[4];
 
-//     document.getElementById().innerHTML = 
-//     document.getElementById().innerHTML = 
-//     document.getElementById().innerHTML = 
-//     document.getElementById().innerHTML = 
+    document.getElementById("todayText").innerHTML = cCity[0][0][0];
+    document.getElementById("todayImg").src = "./img/" + cCity[0][0][1];
+    document.getElementById("todayHTemp").innerHTML = cCity[0][1] + "&deg;";
+    document.getElementById("todayLTemp").innerHTML = cCity[0][2] + "&deg;";
 
-//     document.getElementById().innerHTML = 
-//     document.getElementById().innerHTML = 
-//     document.getElementById().innerHTML = 
-//     document.getElementById().innerHTML = 
-// }
+    document.getElementById("tomorrowText").innerHTML = cCity[1][0][0];
+    document.getElementById("tomorrowImg").src = "./img/" + cCity[1][0][1];
+    document.getElementById("tomorrowHTemp").innerHTML = cCity[1][1] + "&deg;";
+    document.getElementById("tomorrowLTemp").innerHTML = cCity[1][2] + "&deg;"; 
 
+    document.getElementById("day3Text").innerHTML = cCity[2][0][0];
+    document.getElementById("day3Img").src = "./img/" + cCity[2][0][1];
+    document.getElementById("day3HTemp").innerHTML = cCity[2][1] + "&deg;";
+    document.getElementById("day3LTemp").innerHTML = cCity[2][2] + "&deg;";
 
+    document.getElementById("day4Text").innerHTML = cCity[3][0][0];
+    document.getElementById("day4Img").src = "./img/" + cCity[3][0][1];
+    document.getElementById("day4HTemp").innerHTML = cCity[3][1] + "&deg;";
+    document.getElementById("day4LTemp").innerHTML = cCity[3][2] + "&deg;";
+}
 
-initialize()
+initialize();
+
+function celsioso() {
+    if (fCheck == true){
+        console.log("hello")
+        document.getElementById("todayHTemp").innerHTML = Math.floor((cCity[0][1] - 32) * 5 / 9) + "&deg;";
+        document.getElementById("todayLTemp").innerHTML = Math.floor((cCity[0][2] - 32) * 5 / 9) + "&deg;";
+    
+        document.getElementById("tomorrowHTemp").innerHTML = Math.floor((cCity[1][1] - 32) * 5 / 9) + "&deg;";
+        document.getElementById("tomorrowLTemp").innerHTML = Math.floor((cCity[1][2] - 32) * 5 / 9) + "&deg;"; 
+    
+        document.getElementById("day3HTemp").innerHTML = Math.floor((cCity[2][1] - 32) * 5 / 9) + "&deg;";
+        document.getElementById("day3LTemp").innerHTML = Math.floor((cCity[2][2] - 32) * 5 / 9) + "&deg;";
+    
+        document.getElementById("day4HTemp").innerHTML = Math.floor((cCity[3][1] - 32) * 5 / 9) + "&deg;";
+        document.getElementById("day4LTemp").innerHTML = Math.floor((cCity[3][2] - 32) * 5 / 9) + "&deg;";
+        fCheck = false;
+    }else {
+        weatherCardChango()
+        fCheck = true;
+    }
+}

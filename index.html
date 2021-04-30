@@ -44,7 +44,7 @@
     .....M.~.:..,:?MM....................IMMM=+IMM.=~+M......
     .....M=~~::::?MM.....................MMM++~IMM::+MM......
     .....MM:~~:,++MM....................~MM++++7MM.~+MM .....
-    .....MM~~~~~:?MM....................MM?+++                                             IIMM~~ZM.......
+    .....MM~~~~~:?MM....................MM?+++IIMM~~ZM.......
     ......M?,~:,::MM...................MM+++++?7MM~~MM.......   
     ......MM:.:::,=M7.................MM+++++=77M~:NM  ......
     .. . ..M$.~::~~MM...............=MM+++++?IIMM.+M,     ...
@@ -83,15 +83,15 @@
     <h1 class="title">DojoWeather</h1>
     <h1 class="spacer">SPACE</h1>
     <ul class="links">
-        <li class="cities"><a href="#" id="link1">Burbank</a></li>
-        <li class="cities"><a href="#" id="link2">Chicago</a></li>
-        <li class="cities"><a href="#" id="link3">Dallas</a></li>
+        <li class="cities"><a onclick="linkOChango(this)">Burbank</a></li>
+        <li class="cities"><a onclick="linkOChango(this)">Chicago</a></li>
+        <li class="cities"><a onclick="linkOChango(this)">Dallas</a></li>
     </ul>
 </div>
 <div class="mainCont">
     <div class="cityHeader">
         <h1 id="currentCity">Lorem</h1>
-        <p>show temperature in <select name="unit" class="unit" id="unit">
+        <p>show temperature in <select name="unit" class="unit" id="unit" onchange="celsioso()">
             <option value="fahrenheit">&deg; F</option>
             <option value="celsius">&deg; C</option>
         </select></p>
@@ -100,7 +100,7 @@
         <div class="weatherCard" id="todayCard">
             <h2>Today</h2>
             <img src="./img/some_sun.png" alt="Today's Weather" class="image" id="todayImg">
-            <p id="todayText">lorem</p>
+            <p id="todayText"></p>
             <p><span class="highTemp" id="todayHTemp">42&deg;</span><span class="lowTemp" id="todayLTemp">42&deg;</span></p>
         </div>
         <div class="weatherCard" id="tomorrowCard">

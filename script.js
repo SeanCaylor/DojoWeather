@@ -80,7 +80,7 @@ function linkOChango(element){
     document.getElementById("currentCity").innerHTML = element.innerHTML;
     element.innerHTML = temp;
 
-    console.log(cCity)
+    window.alert("Loading weather report...")
     weatherCardChango();
 }
 

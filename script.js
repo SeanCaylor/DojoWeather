@@ -17,7 +17,7 @@ var cookie = document.getElementById("cookieAlert");
 var day3 = ""
 var day4 = ""
 var today = daysOfWeek[todaysDay()];
-var fCheck = true; //indicates we're in Fahrenheit
+var fCheck = false; //indicates we're in Fahrenheit
 
 
 var cityWeather = {
@@ -80,7 +80,6 @@ function linkOChango(element){
     document.getElementById("currentCity").innerHTML = element.innerHTML;
     element.innerHTML = temp;
 
-    window.alert("Loading weather report...")
     weatherCardChango();
 }
 
@@ -134,13 +133,17 @@ function weatherCardChango() {
     document.getElementById("day4Img").src = "./img/" + cCity[3][0][1];
     document.getElementById("day4HTemp").innerHTML = cCity[3][1] + "&deg;";
     document.getElementById("day4LTemp").innerHTML = cCity[3][2] + "&deg;";
+    
+    if (document.getElementById("unit").value == "celsius"){
+        celsioso();
+    }
 }
 
 initialize();
 
 function celsioso() {
-    if (fCheck == true){
-        console.log("hello")
+    let select = document.getElementById("unit")
+    if (select.value == "celsius"){
         document.getElementById("todayHTemp").innerHTML = Math.floor((cCity[0][1] - 32) * 5 / 9) + "&deg;";
         document.getElementById("todayLTemp").innerHTML = Math.floor((cCity[0][2] - 32) * 5 / 9) + "&deg;";
     
@@ -153,7 +156,7 @@ function celsioso() {
         document.getElementById("day4HTemp").innerHTML = Math.floor((cCity[3][1] - 32) * 5 / 9) + "&deg;";
         document.getElementById("day4LTemp").innerHTML = Math.floor((cCity[3][2] - 32) * 5 / 9) + "&deg;";
         fCheck = false;
-    }else {
+    }else if (select.value == "fahrenheit") {
         weatherCardChango()
         fCheck = true;
     }
